@@ -9,6 +9,9 @@ from confluent_kafka.avro import AvroProducer
 
 logger = logging.getLogger(__name__)
 
+broker_url = "PLAINTEXT://localhost:9092"
+schema_url = "http://localhost:8081"
+
 
 class Producer:
     """Defines and provides common functionality amongst Producers"""
@@ -33,8 +36,8 @@ class Producer:
 
 
         self.broker_properties = {
-            "bootstrap.servers": "PLAINTEXT://localhost:9092",
-            "schema.registry.url": "http://localhost:8081",
+            "bootstrap.servers": broker_url,
+            "schema.registry.url": schema_url,
         }
 
         # If the topic does not already exist, try to create it
@@ -71,7 +74,7 @@ class Producer:
 
     def close(self):
         """Prepares the producer for exit by cleaning up the producer"""
-        if self.producer:
+        if self.producer is not None:
             self.producer.flush()
 
     def time_millis(self):

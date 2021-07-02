@@ -20,7 +20,7 @@ class Turnstile(Producer):
         station_name = (station.name.lower().replace("/", "_and_").replace(" ", "_").replace("-", "_").replace("'", ""))
 
         super().__init__(
-            topic_name = f"{station_name}", 
+            topic_name = 'topic_turnstile', 
             key_schema=Turnstile.key_schema,
             num_partitions=2,
             num_replicas=2,

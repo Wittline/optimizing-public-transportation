@@ -21,14 +21,14 @@ class Station(Producer):
         self.name = name
 
         station_name = (self.name.lower().replace("/", "_and_").replace(" ", "_").replace("-", "_").replace("'", ""))
-        topic_name = f'station.arrivals.{station_name}'
+        topic_name = f'station_{station_name}'
 
         super().__init__(
             topic_name,
             key_schema= Station.key_schema,
             value_schema= Station.key_value,
-            num_partitions=3,
-            num_replicas=3,
+            num_partitions=2,
+            num_replicas=2,
         )
 
         self.station_id = int(station_id)

@@ -46,18 +46,19 @@ async def process_stations(sts):
 
     async for s in sts:
         if s.blue:
-            s = 'blue'
+            l = 'blue'
         elif s.red:
-            line = 'red'
+            l = 'red'
         elif s.green:
-            line = 'green'
+            l = 'green'
         else:
-            line = ''
+            l = ''
 
         table[s.station_id] = TransformedStation(
+            line=l,
+            order=s.order,
             station_id=s.station_id,
-            station_name=s.station_name,
-            order=s.order,line=line
+            station_name=s.station_name             
         )
 
 if __name__ == "__main__":

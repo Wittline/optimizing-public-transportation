@@ -31,6 +31,8 @@ class TransformedStation(faust.Record):
 
 #   places it into a new topic with only the necessary information.
 app = faust.App("stations-stream", broker="kafka://localhost:9092", store="memory://")
+topic = app.topic("TODO", value_type=Station)
+out_topic = app.topic("TODO", partitions=1)
 
 table = app.Table(
    # "TODO",
@@ -38,7 +40,6 @@ table = app.Table(
    partitions=1,
    changelog_topic=out_topic,
 )
-
 
 
 if __name__ == "__main__":

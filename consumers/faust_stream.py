@@ -41,5 +41,24 @@ table = app.Table(
    changelog_topic=out_topic,
 )
 
+@app.agent(topic)
+async def process_stations(sts):
+
+    async for s in sts:
+        if s.blue:
+            s = 'blue'
+        elif s.red:
+            line = 'red'
+        elif s.green:
+            line = 'green'
+        else:
+            line = ''
+
+        table[s.station_id] = TransformedStation(
+            station_id=s.station_id,
+            station_name=s.station_name,
+            order=s.order,line=line
+        )
+
 if __name__ == "__main__":
     app.main()

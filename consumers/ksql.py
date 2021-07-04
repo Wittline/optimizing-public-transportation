@@ -34,7 +34,6 @@ WITH (VALUE_FORMAT='json') AS
     GROUP BY station_id;
 """
 
-
 def execute_statement():
     """Executes the KSQL statement against the KSQL API"""
     if topic_check.topic_exists("Turnstile_summary") is True:

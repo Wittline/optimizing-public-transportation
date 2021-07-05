@@ -56,8 +56,9 @@ class Line:
 
     def process_message(self, message):
         """Given a kafka message, extract data"""
-        # TODO: Based on the message topic, call the appropriate handler.
-        if True: # Set the conditional correctly to the stations Faust Table
+        message_topic = message.topic()
+
+        if message_topic == 'faust_stations_conn_table':
             try:
                 value = json.loads(message.value())
                 self._handle_station(value)

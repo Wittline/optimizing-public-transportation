@@ -48,19 +48,11 @@ class KafkaConsumer:
 
     def on_assign(self, consumer, partitions):
         """Callback for when topic assignment takes place"""
-        # TODO: If the topic is configured to use `offset_earliest` set the partition offset to
-        # the beginning or earliest
-        logger.info("on_assign is incomplete - skipping")
-        for partition in partitions:
-            pass
-            #
-            #
-            # TODO
-            #
-            #
-
-        logger.info("partitions assigned for %s", self.topic_name_pattern)
+        for p in partitions:
+            consumer.seek(p)
+        logger.info(f"partitions assigned for {self.topic_name_pattern}")
         consumer.assign(partitions)
+
 
     async def consume(self):
         """Asynchronously consumes data from kafka topic"""
@@ -72,21 +64,22 @@ class KafkaConsumer:
 
     def _consume(self):
         """Polls for a message. Returns 1 if a message was received, 0 otherwise"""
-        #
-        #
-        # TODO: Poll Kafka for messages. Make sure to handle any errors or exceptions.
-        # Additionally, make sure you return 1 when a message is processed, and 0 when no message
-        # is retrieved.
-        #
-        #
-        logger.info("_consume is incomplete - skipping")
-        return 0
+        try:
+            msg = self.consumer.poll(timeout=1.0)
+            if msg is not None:
+                if msg.error() is not None:
+                    self.message_handler(msg)
+                    return 1
+                else:
+                    logger.error(msg.error())
+                    return 0
+            else:
+                logger.debug("no message")
+                return 0
+        except SerializerError as error:
+            logger.error(f"Error consuming data: {error.message}")
+            return 0
 
 
     def close(self):
-        """Cleans up any open kafka consumers"""
-        #
-        #
-        # TODO: Cleanup the kafka consumer
-        #
-        #
+        self.consumer.close()

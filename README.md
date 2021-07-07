@@ -6,6 +6,10 @@ Public data from <a href="https://www.transitchicago.com/data/"> Chicago Transit
 
 # Architecture
 
+# How to run the project
+
+
+
 
 
 

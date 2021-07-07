@@ -6,7 +6,12 @@ Public data from <a href="https://www.transitchicago.com/data/"> Chicago Transit
 
 # Architecture
 
+![image](https://user-images.githubusercontent.com/8701464/124824036-78558d00-df37-11eb-8db2-809633a05bd4.png)
+
+
 # How to run the project
+
+1. Install docker and docker compose 
 
 
 

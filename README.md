@@ -11,9 +11,9 @@ Public data from <a href="https://www.transitchicago.com/data/"> Chicago Transit
 
 # How to run the project
 
-Install Docker Desktop on Windows, it will install docker compose as well, docker compose will alow you to run multiple containers applications,
+1. Install Docker Desktop on Windows, it will install docker compose as well, docker compose will alow you to run multiple containers applications,
 
-Install git-bash for windows, once installed , open git bash and download this repository, this will download the dags folder and the docker-compose.yaml file, and other files needed.
+2. Install git-bash for windows, once installed , open git bash and download this repository, this will download the dags folder and the docker-compose.yaml file, and other files needed.
 
 1. Install docker and docker compose 
 

@@ -58,15 +58,16 @@ class Line:
         """Given a kafka message, extract data"""
         message_topic = message.topic()
 
-        if message_topic == 'faust_stations_conn_table':
+        """Given a kafka message, extract data"""
+        if message_topic == "faust_stations_conn_table":
             try:
                 value = json.loads(message.value())
                 self._handle_station(value)
             except Exception as e:
                 logger.fatal("bad station? %s, %s", value, e)
-        elif True: # Set the conditional to the arrival topic
+        elif 'arrivals' in message_topic:
             self._handle_arrival(message)
-        elif True: # Set the conditional to the KSQL Turnstile Summary Topic
+        elif "Turnstile_summary" in message_topic:
             json_data = json.loads(message.value())
             station_id = json_data.get("STATION_ID")
             station = self.stations.get(station_id)

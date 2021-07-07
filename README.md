@@ -114,4 +114,39 @@ Removing starter_schema-registry_1    ... done
 Removing starter_kafka0_1             ... done
 Removing starter_zookeeper_1          ... done
 ```
+# Running the producer
 
+```
+cd producers
+virtualenv venv
+. venv/bin/activate
+pip install -r requirements.txt
+python simulation.py
+```
+# Running the Faust Stream Processing Application
+```
+cd consumers
+virtualenv venv
+. venv/bin/activate
+pip install -r requirements.txt
+faust -A faust_stream worker -l info
+```
+
+# Running the KSQL Creation Script
+```
+cd consumers
+virtualenv venv
+. venv/bin/activate
+pip install -r requirements.txt
+python ksql.py
+```
+
+# Running the consumer
+
+```
+cd consumers
+virtualenv venv
+. venv/bin/activate
+pip install -r requirements.txt
+python server.py
+```

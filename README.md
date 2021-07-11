@@ -8,8 +8,6 @@ Public data from <a href="https://www.transitchicago.com/data/"> Chicago Transit
 
 ![image](https://user-images.githubusercontent.com/8701464/124824036-78558d00-df37-11eb-8db2-809633a05bd4.png)
 
-
-#
 # How to run the project with docker
 
 - Install <a href="https://docs.docker.com/docker-for-windows/install/">Docker Desktop on Windows</a>, it will install **docker compose** as well, docker compose will alow you to run multiple containers applications

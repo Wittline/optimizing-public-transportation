@@ -11,6 +11,7 @@ from models.turnstile_hardware import TurnstileHardware
 logger = logging.getLogger(__name__)
 
 
+
 class Turnstile(Producer):
     key_schema = avro.load(f"{Path(__file__).parents[0]}/schemas/turnstile_key.json")
     value_schema = avro.load(f"{Path(__file__).parents[0]}/schemas/turnstile_value.json")
